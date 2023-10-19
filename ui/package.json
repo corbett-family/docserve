@@ -1,0 +1,38 @@
+{
+  "name": "docserve-web-ui",
+  "private": true,
+  "description": "A web ui for serving openAPI docs",
+  "version": "1.0.0",
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "dependencies": {
+    "@stoplight/elements": "^7.0.0",
+    "canvas": "^2.8.0",
+    "gatsby": "^3.8.1",
+    "jsdom": "^16.6.0",
+    "postcss": "^8.3.5",
+    "process": "^0.11.10",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "url": "^0.11.3",
+    "util": "^0.12.4"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/corbett-family/docserve"
+  },
+  "bugs": {
+    "url": "https://github.com/corbett-family/docserve/issues"
+  }
+}

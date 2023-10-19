@@ -1,0 +1,143 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"FundAccess": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"role": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"number",
+					"role"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AuthDetails": {
+				"properties": {
+					"authenticated": {
+						"type": "boolean"
+					},
+					"partner": {
+						"type": "string"
+					},
+					"funds": {
+						"items": {
+							"$ref": "#/components/schemas/FundAccess"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"authenticated",
+					"partner",
+					"funds"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"bearer_token": {
+				"type": "http",
+				"scheme": "bearer"
+			}
+		}
+	},
+	"info": {
+		"title": "partner-api",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/": {
+			"get": {
+				"operationId": "HelloWorld",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/version": {
+			"get": {
+				"operationId": "GetVersion",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"type": "string"
+								},
+								"examples": {
+									"Example 1": {
+										"value": "20230926191435-c80bd0ce54ea1b88b15b4bffd966a56006428926"
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get the version of the application.  Version information is separated by a hyphen, with the first\npart being the date and time of the build, and the second part being the git commit hash.",
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/auth/validate": {
+			"get": {
+				"operationId": "Validate",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/AuthDetails"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearer_token": []
+					}
+				],
+				"parameters": []
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
