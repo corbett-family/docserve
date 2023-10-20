@@ -36,7 +36,7 @@ func main() {
 
 	http.HandleFunc("/swagger.json", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Cache-Control", "no-cache")
-		http.ServeFile(w, r, "/Users/jcorbett/dev/partner-api/src/tsoa/swagger.json")
+		http.ServeFile(w, r, *swaggerFile)
 	})
 
 	http.Handle("/", intercept404(fileServer, serveIndex))
